@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import colors from "colors";
 import ConnectDB from './backend/config/db.js';
+import userRoutes from "./backend/routes/userRoutes.js";
+
 
 dotenv.config();
 ConnectDB();
@@ -16,6 +18,9 @@ const app = express();
 // app.get("/", (req, res) => {
 //   res.send("pi running");
 // });
+
+
+app.use("/api/users",userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
