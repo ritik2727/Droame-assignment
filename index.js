@@ -4,7 +4,7 @@ import morgan from "morgan";
 import colors from "colors";
 import ConnectDB from './backend/config/db.js';
 import userRoutes from "./backend/routes/userRoutes.js";
-
+import bookingRoutes from "./backend/routes/bookingRoutes";
 
 dotenv.config();
 ConnectDB();
@@ -21,6 +21,7 @@ const app = express();
 
 
 app.use("/api/users",userRoutes);
+app.use("/api/booking", bookingRoutes);
 
 const PORT = process.env.PORT || 5000;
 
