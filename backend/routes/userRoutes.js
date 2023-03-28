@@ -28,7 +28,7 @@ router.post(
 
     if (user) {
       res.status(201).json({
-        _id: user._id,
+        _id: user._id, 
         name: user.name,
         phoneNo: user.phoneNo,
         isAdmin: user.isAdmin,
@@ -55,12 +55,12 @@ router.get(
 // @route   DELETE /api/users/:id
 // @access  Private/Admin
 router.delete(
-  "/delete/:id",
+  "/:id",
   asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
-
+    console.log("fdf",user)
     if (user) {
-      await user.remove();
+      await user.deleteOne();
       res.json({ message: "User removed" });
     } else {
       res.status(404);
@@ -89,7 +89,7 @@ router.get(
 // @desc    Update user
 // @route   PUT /api/users/:id
 // @access  Private/Admin
-router.get(
+router.put(
   "/update/:id",
   asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
@@ -116,5 +116,6 @@ router.get(
     }
   })
 );
+
 
 export default router;

@@ -4,14 +4,15 @@ import morgan from "morgan";
 import colors from "colors";
 import ConnectDB from './backend/config/db.js';
 import userRoutes from "./backend/routes/userRoutes.js";
-import bookingRoutes from "./backend/routes/bookingRoutes";
-
+import bookingRoutes from "./backend/routes/bookingRoutes.js";
+import  cors from 'cors';
 dotenv.config();
 ConnectDB();
 
 
 const app = express();
-
+app.use(cors())
+app.use(express.json())
 
 // app.listen(5000, console.log("server"));
 
